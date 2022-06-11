@@ -41,6 +41,7 @@ public class FIFOPriceTimeTradingOrderProcessor implements TradingOrderProcessor
         PriorityQueue<OrderDetail> buyOrder = buyOrders.get(sellOrder.getStockName());
         if (buyOrder != null) {
             PriorityQueue<OrderDetail> buyOrdersClone = new PriorityQueue<>(buyOrder);
+            buyOrder.clear();
             while (buyOrdersClone.peek() != null) handleBuyTrading(buyOrdersClone.poll());
         }
     }
